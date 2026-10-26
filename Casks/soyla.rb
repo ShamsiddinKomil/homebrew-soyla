@@ -7,17 +7,16 @@ cask "soyla" do
   desc "Dictation for Uzbek, Russian and English in one sentence"
   homepage "https://github.com/ShamsiddinKomil/soyla"
 
+  auto_updates true # Soyla updates itself (Settings → About); brew upgrade leaves it alone
   depends_on macos: :sonoma # macOS 14+, the same as Package.swift and LSMinimumSystemVersion
-
-  auto_updates true            # Soyla updates itself (Settings → About); brew upgrade leaves it alone
 
   app "Soyla.app"
 
   zap trash: [
     "~/Library/Application Support/Soyla",
+    "~/Library/Preferences/ai.ovoz.settings.plist", # settings from before the rename
     "~/Library/Preferences/ai.soyla.app.plist",
     "~/Library/Preferences/ai.soyla.settings.plist",
-    "~/Library/Preferences/ai.ovoz.settings.plist", # settings from before the rename
   ]
 
   caveats <<~EOS
